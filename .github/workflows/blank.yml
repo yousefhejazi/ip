@@ -1,0 +1,21 @@
+name: Show IP Address on Windows
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  show-ip:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout the repository to ensure files are available
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Display the IP Address
+      - name: Show IP Address
+        run: |
+          ipconfig | findstr /R "IPv4"
